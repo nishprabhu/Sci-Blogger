@@ -1,0 +1,1 @@
+<input type="text" name="title_response" value="<?php echo $response;?>" class="search-form-input" placeholder="Enter any news title" autocomplete="off"  style="width:900px; border:none;outline:0;min-width: 500px;" />
