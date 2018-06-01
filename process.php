@@ -28,7 +28,7 @@ function myresponse($topic, $message)
   $json_obj = json_decode($message,true);
   $response = $json_obj['title'];
   //call the result view
-include "result.php";
+include "newresult.php";
 #$mqtt->close();
 exit();
 }

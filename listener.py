@@ -48,7 +48,7 @@ def on_message_new_request(mosq, obj, msg):
 def process(title, abstract):
 	print "Title=", title
 	print "Abstract=", abstract
-
+	'''
 	url = 'http://www.someserver.com/cgi-bin/register.cgi'
 	data = {'title' : title, 'abs' : abstract }
 	url_values = urllib.urlencode(data)
@@ -58,8 +58,10 @@ def process(title, abstract):
 	data = urllib2.urlopen(full_url)
 
 	data = str(data)
-
+	
 	return data
+	'''
+	return title.upper()
 
 mqttc = mqtt.Client()
 def main():
@@ -70,7 +72,7 @@ def main():
 	mqttc.connect("localhost", 1883, 60)
 	mqttc.subscribe("request", 0)
 	print "Subscribed to request"
-  mqttc.loop_forever()
+	mqttc.loop_forever()
 
 if __name__ == "__main__":
 	main()
