@@ -137,6 +137,7 @@
             <br/>
             <ul class="list-inline">
 
+
               <li><h5> Select heuristic function</h5></li>
             <li><select name="heuristic" class="form">
               <option value="1">H(pt, abs) = pt</option>
@@ -167,7 +168,7 @@
       </div>
 
         <div id="margins" class="wrapper">
-        <div id ="animation" style="margin-left: 870px; display: none;" class="tube">
+        <div id ="animation" style="margin-left: 690px; display: none;" class="tube">
           <br/>
           <br/>
           <br/>
@@ -268,6 +269,7 @@
                 <?php
 
                 echo $sequence[1];
+                unset($sequence);
                 /*
                   if( isset($_POST['title']) && trim($_POST['title'] != '') && trim($_POST['abstract'] != '') && trim($selectoption)!='')
                     { 
