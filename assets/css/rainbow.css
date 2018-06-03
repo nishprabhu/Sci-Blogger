@@ -7,10 +7,10 @@ body {
 .wrapper {
     position: relative;
     margin-left: 100px;
-    top: 10%;
+    top: 0%;
     text-align: center-left;
-    -webkit-transform: translateY(-1000%);
-    transform: translateY(+200%);
+    -webkit-transform: translateY(-100%);
+    transform: translateY(+5%);
     z-index: 1;
 }
 .bubbles {

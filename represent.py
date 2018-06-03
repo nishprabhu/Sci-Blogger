@@ -4,12 +4,12 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import sklearn.feature_extraction.text as sk
 
 def represent(title, abstract):
-  print ("ihere")
-  file_list = os.listdir('''path to folder with abstract text files''')
-  print (file_list)
+  #print ("ihere")
+  file_list = os.listdir('/var/www/html/sciblogger/text_files/')
+  #print (file_list)
   vec = sk.TfidfVectorizer(file_list)
 
-  vec.fit([open('''path to folder with abstract text files''' + file_name).read() for file_name in file_list])
+  vec.fit([open('/var/www/html/sciblogger/text_files/' + file_name).read() for file_name in file_list])
   tfidf = vec.transform([abstract])
 
   word_list = vec.get_feature_names()

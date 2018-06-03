@@ -19,12 +19,7 @@
   <link href="assets/css/bootstrap.techie.css" rel="stylesheet">
   <link href="assets/css/rainbow.css" rel="stylesheet">
 
-  <!-- =======================================================
-    Theme Name: Techie
-    Theme URL: https://bootstrapmade.com/techie-free-skin-bootstrap-3/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
+ 
 
 <script type="text/javascript">
   
@@ -126,7 +121,7 @@
         <div class="col-sm-6 col-lg-6" >
         <div class="panel panel" id="panels" data-effect='helix'>
          <div class="panel-footer"> 
-          <h2 class="panel-title">Research Paper</h2>
+          <h1 class="panel-title" align="center" ><b>Research Paper</b></h1>
          </div>
           <div class="panel-body">
           <form method="POST" action="index.php">
@@ -138,7 +133,7 @@
             <ul class="list-inline">
 
 
-              <li><h5> Select heuristic function</h5></li>
+              <li><h5><b>&bull; Select heuristic function</b></h5></li>
             <li><select name="heuristic" class="form">
               <option value="1">H(pt, abs) = pt</option>
               <option value="2">H(pt, abs) = RP(abs) </option>
@@ -158,8 +153,12 @@
           </div>
           <div class="panel-footer">
 
-            <button class="btn btn-warning" onclick="load_animation()" type="submit">Run the engine!</a>
-     
+            <button type="submit" class="btn btn-labeled btn-success" onclick="load_animation()">
+              <span class="btn-label">
+                <i class="fa fa-check"></i>
+              </span>
+              Run the engine!
+            </button>     
           </div>
         </div>
 
@@ -202,13 +201,13 @@
           <div class="panel panel-info">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a class="accordion-toggle"  data-parent="#accordion-panel2" href="#collapseOnePanel2">
+                <a class="accordion-toggle" data-parent="#accordion-panel2" href="#collapseOnePanel2">
                   After applying our selected heuristic function <i>H</i>
                 </a>
               </h4>
             </div>
             <div id="collapseOnePanel2" >
-              <div class="panel-body">
+              <div class="panel-body"> 
         <?php          
 	 if( isset($_POST['title']) && trim($_POST['title'] != '') && trim($_POST['abstract'] != '') && trim($selectoption)!='')
                     { 
@@ -223,7 +222,13 @@
                       exec($command, $sequence);
                       $len = count($sequence);
                       #echo $len;
+                      echo '<h5>';
+                      echo '<b>';
+
                       echo $sequence[0];
+
+                      echo '</b>';
+                      echo '</h5>';
                       /*
                       for ($x = 0; $x < $len; $x++){
                         echo $sequence[$x];
@@ -258,8 +263,8 @@
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h4 class="panel-title">
-                <a class="accordion-toggle" data-parent="#accordion-panel2" href="#collapseTwoPanel2">
-                  Blog title
+                <a class="accordion-toggle" style="text-align: center;" data-parent="#accordion-panel2" href="#collapseTwoPanel2">
+                 <span style="align: center;" ><b> Blog title </b></span>
                 </a>
               </h4>
             </div>
@@ -267,8 +272,11 @@
               <div class="panel-body">
 
                 <?php
-
+                      echo '<h5>';
+                      echo '<b>';
                 echo $sequence[1];
+                 echo '</h5>';
+                      echo '</b>';
                 unset($sequence);
                 /*
                   if( isset($_POST['title']) && trim($_POST['title'] != '') && trim($_POST['abstract'] != '') && trim($selectoption)!='')
@@ -319,18 +327,50 @@
         <h4 align="center">The architecture of our engine <i>Sci-Blogger</i> is explained below... </h4>
         <br/>
         <br/>
-      <div class="col-sm-12 col-lg-12">
+      <div class="col-sm-16 col-lg-16">
             <div class="row" align="center">
-              <div class="col-lg-12 col-sm-12 ">
+              <div class="col-lg-16 col-sm-16 ">
                 <div class="thumbnail">
                   <img src="assets/img/cikm.png" alt="">
-                  <hr>
-                  <div class="caption">
-                    <h3>Thumbnail label</h3>
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p><a href="#" class="btn btn-primary">Action</a> <a href="#" class="btn btn-default">Action</a></p>
-                  </div>
+                  
                 </div>
+                <br/>
+                <div style="width:80%" >
+             <h4 align="left" ><p align="center">   <i>Sci-Blogger</i> consists of a two-stage pipeline, which is described in detail as follows:</p>
+<br/>
+<p> We employ a heuristic-based function which takes the title and abstract of the <mark>research paper</mark> and extracts relevant information to feed it into the next step. This is done by experimenting with various heuristics as we will describe below.
+The output from the previous step is fed into a sequence-to-sequence neural generation model in order to generate the title of the <mark>blog post</mark>.
+</p>
+<br/>
+<hr width="75%">
+<br/>
+<p><mark>For stage 1</mark> - given our dataset, <span style="font-weight: 1000">T = (bt, pt, abs)</span>, where, <span style="font-weight: 1000">bt</span> is the blog title, <span style="font-weight: 100">pt</span> is the paper title and <span style="font-weight: 1000">abs</span> is the abstract, we define a heuristic function <span style="font-weight: 1000">H(pt, abs)</span> which takes a paper title and abstract as parameters and outputs a <span style="font-weight: 1000">sequence s</span>.  We train our seq2seq models SS to take s as input and generates bt' as output with a loss function <span style="font-weight: 1000">L (bt, bt')</span></p>
+<br/>
+<p align="center"><i> The various heuristic functions H we explored are outlined below:</i> </p>
+<br/>
+<p><span style="font-weight: 1000">&bull; H (pt, abs) = pt </span> : In this heuristic, we assume that the paper title will encapsulate sufficient information to generate the blog title.</p>
+<br/>
+<p><span style="font-weight: 1000">&bull; H (pt, abs) = RP (abs) </span>: Here, we define RP (abs) as the most representative sentence in abs.  We used the sum of TF-IDF values of words in a sentence as representativeness of a sentence and follow a similar procedure like the previous approach.</p>
+<br/>
+<p><span style="font-weight: 1000">&bull; H(pt, abs) = RPD(abs)</span>: Let RD(abs) and RP(abs) be the normalized readability and representativeness of a sentence respectively, where normalization is performed across all sentences. We define RPD(abs) = nRD(abs) x nRP(abs).</p>
+<br/>
+<p>We also experimented with different combinations of the above heuristics: 
+
+<span style="font-weight: 1000">H (pt, abs) = pt | RD(abs), 
+H (pt, abs) = pt | RP (abs), 
+H (pt, abs) = pt | RPD (abs) and
+H (pt, abs) = pt | abs</span>; where | implies concatenation of the associated heuristics. </p>
+
+<br/>
+<hr width="80%">
+<br/>
+<p><mark>In stage 2</mark> - we leverage a competent sequence-to-sequence (seq2seq) architecture for generating the blog titles using the intermediate output sequence from stage 1.</p>
+<br/>
+ <p>Sequence-to-sequence networks have been successfully applied to summarization and neural machine translation tasks where an <span style="font-weight: 1000">attention</span> is defined over the input sequence to allow the network to focus on specific parts of the input text to generate the text.</p>
+<br/>
+ <p>One of the recent advancements in this direction is the <span style="font-weight: 1000">pointer-generator</span> framework where the model extends over the attention-based frameworks to compute a probability <span style="font-weight: 1000">P<sub>gen</sub></span> to decide whether the next word in sequence should be copied from the source or generated from the rest of the vocabulary. Such a framework aids in copying factual information from the source, and we hypothesize that this will be useful when generating blog titles.Hence, we use this pointer-generator model as our sequence-to-sequence framework for the 2nd stage.</p>
+</h4>
+</div>
               </div>
         </div>
       </div>
@@ -340,7 +380,7 @@
   <!-- /container -->
 
   <footer class="text-center">
-    <p>&copy; Information Retrieval & Extraction Lab, IIIT-H</p>
+    <p>&copy; Information Retrieval & Extraction Lab, IIIT-H </p>
     <div class="credits">
       <!--
         All the links in the footer should remain intact.
