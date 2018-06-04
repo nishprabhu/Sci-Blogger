@@ -200,7 +200,7 @@
         <div class="panel-group" id="accordion-panel2">
           <div class="panel panel-info">
             <div class="panel-heading">
-              <h4 class="panel-title">
+              <h4 class="panel-title" align="center">
                 <a class="accordion-toggle" data-parent="#accordion-panel2" href="#collapseOnePanel2">
                   After applying our selected heuristic function <i>H</i>
                 </a>
@@ -217,9 +217,13 @@
                      # echo "hello";   
                       #echo $command;
                       $command = str_replace(array('(',')'),'',$command); #replace () in string
-                  $command = str_replace(array(';',),' ',$command);
-                     # echo $command;
-                      exec($command, $sequence);
+                  $command = str_replace(array(';', '>','<','=','-'),' ',$command);
+                     $command = str_replace(array('\''),' ', $command);
+			$command = str_replace(array('"'), ' ', $command);
+			# echo $command;
+               
+	
+			exec($command, $sequence);
                       $len = count($sequence);
                       #echo $len;
                       echo '<h5>';
@@ -262,9 +266,9 @@
 
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h4 class="panel-title">
+              <h4 class="panel-title" align="center";>
                 <a class="accordion-toggle" style="text-align: center;" data-parent="#accordion-panel2" href="#collapseTwoPanel2">
-                 <span style="align: center;" ><b> Blog title </b></span>
+                  Blog title 
                 </a>
               </h4>
             </div>
@@ -344,6 +348,7 @@ The output from the previous step is fed into a sequence-to-sequence neural gene
 <br/>
 <hr width="75%">
 <br/>
+<br/>
 <p><mark>For stage 1</mark> - given our dataset, <span style="font-weight: 1000">T = (bt, pt, abs)</span>, where, <span style="font-weight: 1000">bt</span> is the blog title, <span style="font-weight: 100">pt</span> is the paper title and <span style="font-weight: 1000">abs</span> is the abstract, we define a heuristic function <span style="font-weight: 1000">H(pt, abs)</span> which takes a paper title and abstract as parameters and outputs a <span style="font-weight: 1000">sequence s</span>.  We train our seq2seq models SS to take s as input and generates bt' as output with a loss function <span style="font-weight: 1000">L (bt, bt')</span></p>
 <br/>
 <p align="center"><i> The various heuristic functions H we explored are outlined below:</i> </p>
@@ -363,6 +368,7 @@ H (pt, abs) = pt | abs</span>; where | implies concatenation of the associated h
 
 <br/>
 <hr width="80%">
+<br/>
 <br/>
 <p><mark>In stage 2</mark> - we leverage a competent sequence-to-sequence (seq2seq) architecture for generating the blog titles using the intermediate output sequence from stage 1.</p>
 <br/>
