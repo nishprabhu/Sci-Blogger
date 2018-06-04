@@ -387,7 +387,7 @@ H (pt, abs) = pt | abs</span>; where | implies concatenation of the associated h
   <!-- /container -->
 
   <footer class="text-center">
-    <p>&copy; Information Retrieval & Extraction Lab, IIIT-H </p>
+    <p>&copy; Information Retrieval & Extraction Lab, IIIT-H <br> Please contact <i>syed.b@research.iiit.ac.in</i> for any information you require.</p>
     <div class="credits">
       <!--
         All the links in the footer should remain intact.
