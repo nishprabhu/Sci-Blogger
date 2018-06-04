@@ -217,8 +217,9 @@
                      # echo "hello";   
                       #echo $command;
                       $command = str_replace(array('(',')'),'',$command); #replace () in string
-                  $command = str_replace(array(';', '>','<','=','-'),' ',$command);
-                     $command = str_replace(array('\''),' ', $command);
+                 $command = str_replace(array('%',';', '>','<','='),' ',$command);
+     			$command = trim(preg_replace('/\s+/', ' ' , $command));
+			    $command = str_replace(array('\''),' ', $command);
 			$command = str_replace(array('"'), ' ', $command);
 			# echo $command;
                
