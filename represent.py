@@ -1,15 +1,23 @@
 import os
-#import ipdb
+import ipdb
 from nltk.tokenize import sent_tokenize, word_tokenize
 import sklearn.feature_extraction.text as sk
+import pickle
+#import ipdb
 
 def represent(title, abstract):
-  #print ("ihere")
-  file_list = os.listdir('/var/www/html/sciblogger/text_files/')
-  #print (file_list)
-  vec = sk.TfidfVectorizer(file_list)
+  #file_list = os.listdir('/home/nishant.prabhu/Research/content-repurposing/data/abstract.txt/')
+  ##file_list = os.listdir(os.getcwd())
 
-  vec.fit([open('/var/www/html/sciblogger/text_files/' + file_name).read() for file_name in file_list])
+  #vec = sk.TfidfVectorizer(file_list)
+  ##tfidf = vec.fit_transform([open(file_name).read() for file_name in file_list])
+
+  #vec.fit([open('abstract.txt/'+file_name).read() for file_name in file_list])
+  #pickle.dump(vec, open('tfidf.pkl', 'wb'))
+
+  #ipdb.set_trace()
+
+  vec = pickle.load(open("tfidf.pkl", "rb"))
   tfidf = vec.transform([abstract])
 
   word_list = vec.get_feature_names()
@@ -44,3 +52,4 @@ def represent(title, abstract):
 
   #ipdb.set_trace()
   return max_sent, scores
+
