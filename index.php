@@ -216,7 +216,7 @@
                       $command = "/usr/bin/python3 run.py -t {$_POST['title']} -a {$_POST['abstract']} -heu {$selectoption}";
                      # echo "hello";   
                       #echo $command;
-                      $command = str_replace(array('(',')'),'',$command); #replace () in string
+                      $command = str_replace(array('(',')', '`'),'',$command); #replace () in string
                  $command = str_replace(array('%',';', '>','<','='),' ',$command);
      			$command = trim(preg_replace('/\s+/', ' ' , $command));
 			    $command = str_replace(array('\''),' ', $command);
