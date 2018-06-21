@@ -14,7 +14,10 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 def syllables(word):
     count = 0
     vowels = 'aeiouy'
-    word = word.lower().strip(".:;?!")
+    word = word.lower().strip(".:?!")
+#    print (word)
+    if len(word)==0:
+        return count
     if word[0] in vowels:
         count +=1
     for index in range(1,len(word)):

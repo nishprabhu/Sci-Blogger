@@ -213,15 +213,30 @@
                     { 
                       global $sequence;
                       #putenv('PYTHONPATH=/home/bakhtiyar/sciblogger/env/bin/python');
-                      $command = "/usr/bin/python3 run.py -t {$_POST['title']} -a {$_POST['abstract']} -heu {$selectoption}";
-                     # echo "hello";   
+		#$_POST['title'] = "\"".$_POST['title'];
+		#$_POST['title'] = $_POST['title']."\"";
+		#echo $_POST['title'];
+$_POST['title'] = str_replace(array('"'), '\\"', $_POST['title']);
+		#	echo $_POST['title'];
+$_POST['abstract'] = str_replace(array('"'), '\\"', $_POST['abstract']);
+$_POST['title'] = str_replace(array('('), '\\(', $_POST['title']);
+$_POST['title'] = str_replace(array(')'), '\\)', $_POST['title']);
+$_POST['abstract'] = str_replace(array('('), '\\(', $_POST['abstract']);
+$_POST['abstract'] = str_replace(array(')'), '\\)', $_POST['abstract']);
+$_POST['title'] = str_replace(array('`'), ' ', $_POST['title']);
+$_POST['abstract'] = str_replace(array('`'), ' ', $_POST['abstract']);
+
+                      $command = "/usr/bin/python3 run.py -t \"{$_POST['title']}\" -a \"{$_POST['abstract']}\" -heu \"{$selectoption}\"";                     # echo "hello";   
                       #echo $command;
-                      $command = str_replace(array('(',')', '`'),'',$command); #replace () in string
-                 $command = str_replace(array('%',';', '>','<','='),' ',$command);
+                      #$command = str_replace(array('(',')', '`'),'',$command); #replace () in string
+                 
+			#$command = str_replace(array('#'), '\#', $command);
+			#$command = str_replace(array('%',';', '>','<','='),' ',$command);
      			$command = trim(preg_replace('/\s+/', ' ' , $command));
-			    $command = str_replace(array('\''),' ', $command);
-			$command = str_replace(array('"'), ' ', $command);
-			# echo $command;
+			#    $command = str_replace(array('\''),' ', $command);
+			#$command = str_replace(array('\\"'), '"', $command);
+			#$command = str_replace(array('
+	#	 echo $command;
                
 	
 			exec($command, $sequence);
