@@ -14,12 +14,12 @@ import numpy as np
 
 def heuristics(title, abstract, h):
   abstract = abstract.strip().lower()
-  abstract = ''.join([x if (x >= 'a' and x <= 'z') or x in [' ', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '.', '?', '!', '-'] else '' for x in abstract])
-  abstract = ''.join([' ' if x in ['-'] else x for x in abstract])
+  #abstract = ''.join([x if (x >= 'a' and x <= 'z') or x in [' ', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '.', '?', '!', '-'] else '' for x in abstract])
+  #abstract = ''.join([' ' if x in ['-'] else x for x in abstract])
   abstract.strip().replace('\n', ' ').replace('\t', ' ')
 
   title = title.strip().lower()
-  title = ''.join([x if (x >= 'a' and x <= 'z') or x in [' '] else '' for x in title])
+  #title = ''.join([x if (x >= 'a' and x <= 'z') or x in [' '] else '' for x in title])
   title = title.strip().replace('\n', ' ').replace('\t', ' ')
   title = title.strip()
 
